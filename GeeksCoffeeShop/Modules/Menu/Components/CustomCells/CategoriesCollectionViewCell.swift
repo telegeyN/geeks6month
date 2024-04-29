@@ -44,7 +44,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    func fill(with item: Category) {
+    func fill(with item: CategoryModel) {
         categoryNameLabel.text = item.categoryName
     }
     

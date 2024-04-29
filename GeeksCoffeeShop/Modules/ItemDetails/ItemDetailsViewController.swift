@@ -7,12 +7,14 @@
 
 import UIKit
 
-class ItemDetailsViewController: UIViewController {
+class ItemDetailsViewController: BaseViewController {
+    
+    private let parser = JSONParser()
     
     var selectedItemImage: UIImage?
     var selectedItemName: String?
     var selectedItemDescription: String?
-    var selectedItemPrice: String?
+    var selectedItemPrice: Int?
     
     private let itemDetailsView: ItemDetailsView = {
         let view = ItemDetailsView()
@@ -24,7 +26,7 @@ class ItemDetailsViewController: UIViewController {
         super.viewDidLoad()
         itemDetailsView.delegate = self
         setUp()
-        itemDetailsView.setItemDetails(image: selectedItemImage, name: selectedItemName, description: selectedItemDescription, price: selectedItemPrice)
+        getAdditionalProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,16 +39,18 @@ class ItemDetailsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    func setUp() {
-        setUpSubviews()
-        setUpConstraints()
+    override func setUp() {
+        super.setUp()
+        itemDetailsView.setItemDetails(image: selectedItemImage, name: selectedItemName, description: selectedItemDescription, price: selectedItemPrice ?? 0)
     }
     
-    func setUpSubviews() {
+    override func setUpSubviews() {
+        super.setUpSubviews()
         view.addSubview(itemDetailsView)
     }
     
-    func setUpConstraints() {
+    override func setUpConstraints() {
+        super.setUpConstraints()
         NSLayoutConstraint.activate(
             [
                 itemDetailsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -55,6 +59,24 @@ class ItemDetailsViewController: UIViewController {
                 itemDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             ]
         )
+    }
+    
+    private func getAdditionalProducts() {
+        guard let path = Bundle.main.path(forResource: "Products", ofType: "json"),
+              case let url = URL(fileURLWithPath: path),
+              let data = try? Data(contentsOf: url) else {
+            return
+        }
+        
+        JSONParser().getItems(from: data) { (result: Result<ProductCategory, JSONParser.CustomError>) in
+            switch result {
+            case .success(let productCategory):
+                itemDetailsView.fill(with: productCategory.products[5].additionalMenuItems ?? [])
+            case .failure(let error):
+                showAlert(with: "Ошибка", message: error.rawValue)
+            }
+        }
+
     }
 }
 

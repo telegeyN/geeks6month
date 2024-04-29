@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MenuViewDelegate: AnyObject {
-    func itemDetailsTapped(item: MenuItem)
+    func itemDetailsTapped(item: ProductCategory.Product)
 }
 
 class MenuView: BaseView {
@@ -50,46 +50,17 @@ class MenuView: BaseView {
         return cv
     }()
     
-    private let categories = [
-        Category(categoryName: "Кофе"),
-        Category(categoryName: "Десерты"),
-        Category(categoryName: "Завтраки"),
-        Category(categoryName: "Напитки"),
-        Category(categoryName: "Сэндвичи")
-    ]
+    private var categories: [CategoryModel] = []
     
-    private let coffeeItems = [
-        MenuItem(logo: UIImage(named: "capuccino"), name: "Капучино", description: "Кофейный напиток", price: "199 c"),
-        MenuItem(logo: UIImage(named: "latte"), name: "Латте", description: "Кофейный напиток", price: "209 c"),
-        MenuItem(logo: UIImage(named: "americano"), name: "Американо", description: "Кофейный напиток", price: "159 c"),
-        MenuItem(logo: UIImage(named: "raf"), name: "Раф", description: "Кофейный напиток", price: "239"),
-        MenuItem(logo: UIImage(named: "espresso"), name: "Эспрессо", description: "Кофейный напиток", price: "149 с"),
-        MenuItem(logo: UIImage(named: "mokko"), name: "Мокко", description: "Кофейный напиток", price: "199 c"),
-        MenuItem(logo: UIImage(named: "matcha"), name: "Матча капучино", description: "Кофейный напиток", price: "339 c")
-    ]
+    private var coffeeItems: [ProductCategory.Product] = []
     
-    private let dessertItems = [
-        MenuItem(logo: UIImage(named: "redvelvet"), name: "Красный бархат", description: "", price: "329 c"),
-        MenuItem(logo: UIImage(named: "cheesecake"), name: "Чизкейк Нью-Йорк", description: "", price: "319 c"),
-        MenuItem(logo: UIImage(named: "truffle"), name: "Трюффельный", description: "", price: "339 c")
-    ]
+    private var dessertItems: [ProductCategory.Product] = []
     
-    private let breakfastItems = [
-        MenuItem(logo: UIImage(named: "kasha"), name: "Каша овсяная", description: "С ягодами", price: "209 c"),
-        MenuItem(logo: UIImage(named: "blinchiki"), name: "Блинчики", description: "С ягодами", price: "219 c"),
-        MenuItem(logo: UIImage(named: "syrniki"), name: "Сырники", description: "С джемом", price: "349 c")
-    ]
+    private var breakfastItems: [ProductCategory.Product] = []
     
-    private let beverageItems = [
-        MenuItem(logo: UIImage(named: "smoothie"), name: "Смузи", description: "Ягодный / Клубничный", price: "299 c"),
-        MenuItem(logo: UIImage(named: "milkshake"), name: "Милкшейк", description: "Орео / Банановый", price: "329 c"),
-        MenuItem(logo: UIImage(named: "juice"), name: "Свежевыжатый сок", description: "Апельсиновый / Яблочный", price: "259 c")
-    ]
+    private var beverageItems: [ProductCategory.Product] = []
     
-    private let sandwichItems = [
-        MenuItem(logo: UIImage(named: "chicken"), name: "Сэндвич", description: "с Курицей", price: "290 с"),
-        MenuItem(logo: UIImage(named: "semga"), name: "Сэндвич", description: "с Семгой", price: "410 с")
-    ]
+    private var sandwichItems: [ProductCategory.Product] = []
     
     private var selectedCategoryIndex: Int = 0
     
@@ -140,6 +111,25 @@ class MenuView: BaseView {
                 menuItemsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
         )
+    }
+    
+    func fill(with categories: [CategoryModel]) {
+        self.categories = categories
+        menuCategotiesCollectionView.reloadData()
+    }
+    
+    func fill(with coffeeItems: [ProductCategory.Product],
+              dessertItems: [ProductCategory.Product],
+              breakfastItems: [ProductCategory.Product],
+              beverageItems: [ProductCategory.Product],
+              sandwichItems: [ProductCategory.Product]){
+        
+        self.coffeeItems = coffeeItems
+        self.dessertItems = dessertItems
+        self.breakfastItems = breakfastItems
+        self.beverageItems = beverageItems
+        self.sandwichItems = sandwichItems
+        menuItemsCollectionView.reloadData()
     }
 }
 

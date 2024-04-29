@@ -22,7 +22,9 @@ class ItemDetailsView: BaseView {
     private let backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .gray
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 13
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -126,11 +128,7 @@ class ItemDetailsView: BaseView {
         return cv
     }()
     
-    private let menuItems = [
-        MenuItem(logo: UIImage(named: "redvelvet"), name: "Красный бархат", description: "", price: "329 c"),
-        MenuItem(logo: UIImage(named: "latte"), name: "Латте", description: "Кофейный напиток", price: "209 c"),
-        MenuItem(logo: UIImage(named: "matcha"), name: "Матча капучино", description: "Кофейный напиток", price: "339 c")
-    ]
+    private var additionalMenuItems:[ProductCategory.Product] = []
     
     private var counter = CounterModel(number: 0)
     
@@ -211,6 +209,11 @@ class ItemDetailsView: BaseView {
         )
     }
     
+    func fill( with additionalMenuItems: [ProductCategory.Product]) {
+        self.additionalMenuItems = additionalMenuItems
+        menuItemsCollectionView.reloadData()
+    }
+    
     @objc
     private func decreaseTap() {
         counter.number -= 1
@@ -228,23 +231,23 @@ class ItemDetailsView: BaseView {
         delegate?.backButtonTapped()
     }
     
-    func setItemDetails(image: UIImage?, name: String?, description: String?, price: String?) {
+    func setItemDetails(image: UIImage?, name: String?, description: String?, price: Int) {
         itemImage.image = image
         nameLabel.text = name
         descriptionLabel.text = description
-        priceLabel.text = price
+        priceLabel.text = "\(price) c"
     }
 }
 
 extension ItemDetailsView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuItems.count
+        return additionalMenuItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdditionalMenuCollectionViewCell.reuseId, for: indexPath) as! AdditionalMenuCollectionViewCell
-        cell.fill(with: menuItems[indexPath.row])
+        cell.fill(with: additionalMenuItems[indexPath.row])
         return cell
     }
 }

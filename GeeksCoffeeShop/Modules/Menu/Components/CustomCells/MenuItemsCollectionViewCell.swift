@@ -144,11 +144,11 @@ class MenuItemsCollectionViewCell: UICollectionViewCell {
         )
     }
     
-    func fill(with item: MenuItem) {
-        itemImage.image = item.logo
+    func fill(with item: ProductCategory.Product) {
+        itemImage.image = UIImage(named: item.image)
         nameLabel.text = item.name
         descriptionLabel.text = item.description
-        priceLabel.text = item.price
+        priceLabel.text = "\(item.price) c"
     }
     
     @objc

@@ -1,0 +1,154 @@
+{
+    "products": [
+        {
+            "coffeeItems": [
+                {
+                    "image": "capuccino",
+                    "product_name": "Капучино",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 199
+                },
+                {
+                    "image": "latte",
+                    "product_name": "Латте",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 209
+                },
+                {
+                    "image": "americano",
+                    "product_name": "Американо",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 159
+                },
+                {
+                    "image": "raf",
+                    "product_name": "Раф",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 239
+                },
+                {
+                    "image": "espresso",
+                    "product_name": "Эспрессо",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 149
+                },
+                {
+                    "image": "mokko",
+                    "product_name": "Мокко",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 199
+                },
+                {
+                    "image": "matcha",
+                    "product_name": "Матча капучино",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 339
+                }
+            ]
+        },
+        {
+            "dessertItems": [
+                {
+                    "image": "redvelvet",
+                    "product_name": "Красный бархат",
+                    "ProductType": "К чаю",
+                    "Product_Price": 329
+                },
+                {
+                    "image": "cheesecake",
+                    "product_name": "Чизкейк Нью-Йорк",
+                    "ProductType": "Сладкое",
+                    "Product_Price": 319
+                },
+                {
+                    "image": "truffle",
+                    "product_name": "Трюффельный",
+                    "ProductType": "Сладкое",
+                    "Product_Price": 359
+                }
+            ]
+        },
+        {
+            "breakfastItems": [
+                {
+                    "image": "kasha",
+                    "product_name": "Каша овсяная",
+                    "ProductType": "С ягодами",
+                    "Product_Price": 209
+                },
+                {
+                    "image": "blinchiki",
+                    "product_name": "Блинчики",
+                    "ProductType": "С ягодами",
+                    "Product_Price": 219
+                },
+                {
+                    "image": "syrniki",
+                    "product_name": "Сырники",
+                    "ProductType": "С джемом",
+                    "Product_Price": 349
+                }
+            ]
+        },
+        {
+            "beverageItems": [
+                {
+                    "image": "smoothie",
+                    "product_name": "Смузи",
+                    "ProductType": "Ягодный/Клубничный",
+                    "Product_Price": 299
+                },
+                {
+                    "image": "milkshake",
+                    "product_name": "Милкшейк",
+                    "ProductType": "Банановый",
+                    "Product_Price": 329
+                },
+                {
+                    "image": "juice",
+                    "product_name": "Сок свежевыжатый",
+                    "ProductType": "Апельсиновый",
+                    "Product_Price": 259
+                }
+            ]
+        },
+        {
+            "sandwichItems": [
+                {
+                    "image": "chicken",
+                    "product_name": "Сэндвич",
+                    "ProductType": "С курицей",
+                    "Product_Price": 289
+                },
+                {
+                    "image": "semga",
+                    "product_name": "Сэндвич",
+                    "ProductType": "С семгой",
+                    "Product_Price": 409
+                }
+            ]
+        },
+        {
+            "additionalMenuItems": [
+                {
+                    "image": "redvelvet",
+                    "product_name": "Красный бархат",
+                    "ProductType": "К чаю",
+                    "Product_Price": 329
+                },
+                {
+                    "image": "latte",
+                    "product_name": "Латте",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 289
+                },
+                {
+                    "image": "matcha",
+                    "product_name": "Матча капучино",
+                    "ProductType": "Кофейный напиток",
+                    "Product_Price": 339
+                }
+            ]
+        }
+    ]
+}
