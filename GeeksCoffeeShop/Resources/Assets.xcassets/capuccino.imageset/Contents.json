@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "1348611114_02-kapuchino.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

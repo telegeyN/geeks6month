@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "free-phone-icon-1-thumb.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
